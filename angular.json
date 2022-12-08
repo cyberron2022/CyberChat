@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "APM": {
+    "CyberChat": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           
           "options": {
-            "outputPath": "dist/APM",
+            "outputPath": "dist/CyberChat",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "APM:build"
+            "browserTarget": "CyberChat:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "APM:build:production"
+              "browserTarget": "CyberChat:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "APM:build"
+            "browserTarget": "CyberChat:build"
           }
         },
         "test": {
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "APM:serve"
+            "devServerTarget": "CyberChat:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "APM:serve:production"
+              "devServerTarget": "CyberChat:serve:production"
             }
           }
         },
@@ -129,7 +129,7 @@
     }
   },
   
-  "defaultProject": "APM",
+  "defaultProject": "CyberChat",
   
   "cli": {
     "analytics": "e55aa3e4-13aa-4a46-afcc-af6d9017163b"

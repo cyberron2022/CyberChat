@@ -3,8 +3,8 @@ import { Observable, Observer, Subject } from "rxjs";
 import { AnonymousSubject } from "rxjs/internal/Subject";
 import { map } from "rxjs/operators";
 
-const CHAT_URL = "ws://localhost:8080";
-//const CHAT_URL = "ws://cyberron2022.github.io:8080/websocketserver/";
+//const CHAT_URL = "ws://localhost:8080";
+const CHAT_URL = "ws://lobster-app-tgcy3.ondigitalocean.app";
 
 export interface IMessageDto {
   user_id: number;
