@@ -12,7 +12,7 @@ import { IMessage } from "../messages/message";
 })
 export class MessageService implements OnInit {
   //private requestUrl = "http://localhost:5084/api/message";
-  private requestUrl = "http://cyberron.somee.com/api/message";
+  private requestUrl = "https://cyberron.somee.com/api/message";
 
   constructor(private http: HttpClient, private authService: AuthService) {}
   ngOnInit(): void {}

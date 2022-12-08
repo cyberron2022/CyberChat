@@ -25,8 +25,8 @@ export class AuthService {
   // private userUrl = "http://localhost:5084/api/account";
   // private AuthUrl = "http://localhost:5084/api/Auth/login";
 
-  private userUrl = "http://cyberron.somee.com/api/account";
-  private AuthUrl = "http://cyberron.somee.com/api/Auth/login";
+  private userUrl = "https://cyberron.somee.com/api/account";
+  private AuthUrl = "https://cyberron.somee.com/api/Auth/login";
 
   constructor(private http: HttpClient, private store: Store<RootState>) {
     this.getCurrentID();

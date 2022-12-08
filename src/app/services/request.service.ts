@@ -13,7 +13,7 @@ import { IRequest } from "../request/request";
 })
 export class RequestService implements OnInit {
   //private requestUrl = "http://localhost:5084/api/request";
-  private requestUrl = "http://cyberron.somee.com/api/request";
+  private requestUrl = "https://cyberron.somee.com/api/request";
   constructor(private http: HttpClient, private authService: AuthService) {}
   ngOnInit(): void {}
 
