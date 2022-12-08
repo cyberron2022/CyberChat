@@ -1,0 +1,26 @@
+<div class='row'>
+  <div class="col-md-5">
+    <cc-message-list
+    [acceptedMessage]="acceptedMessage$ | async"
+    [userType]="userType"
+    
+    [selectedMesssage]="selectedMesssage$ | async"
+    [errorMessage]="errorMessage$ | async"
+    (openMessageEmit)="openMessage($event)"
+
+    
+
+    ></cc-message-list>
+  </div>
+  <div class="col-md-7">
+    <cc-message-chat
+    [messages]="messages$ | async"
+    [userType]="userType"
+    [requestId]="requestId"
+    [currentUserId]="currentUserId"
+    [errorMessage]="errorMessage$ | async"
+    (sendMessageEmit)="sendMessage($event)"
+    (reloadMessageEmit)="reloadMessage($event)"
+    ></cc-message-chat>
+  </div>
+</div>

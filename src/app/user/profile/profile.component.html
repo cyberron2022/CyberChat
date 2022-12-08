@@ -1,0 +1,101 @@
+<div class="card"
+     *ngIf="profile$ | async as profile">
+  <div class="card-header">
+    {{pageTitle}}
+  </div> 
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="saveProfile(profile)"
+          [formGroup]="profileForm"
+          
+          >
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label"
+                 for="firstNameId">First Name</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.firstname }"
+                   class="form-control"
+                   id="firstNameId"
+                   type="text"
+                   placeholder="First Name (required)"
+                   formControlName="firstname"
+                   (blur)="blur()" />
+            <span class="invalid-feedback"
+                  *ngIf="displayMessage.firstname">
+              {{displayMessage.firstname}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label"
+                 for="lastNameId">Last Name</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.lastname}"
+                   class="form-control"
+                   id="lastNameId"
+                   type="text"
+                   placeholder="Last Name (required)"
+                   formControlName="lastname"
+                   (blur)="blur()" />
+            <span class="invalid-feedback"
+                  *ngIf="displayMessage.lastname">
+              {{displayMessage.lastname}}
+            </span>
+          </div>
+        </div>
+
+       
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label"
+                 for="addressId">User Type</label>
+
+          <div class="col-md-9">
+            <textarea [ngClass]="{'is-invalid': displayMessage.userType}"
+                      class="form-control"
+                      id="userTypeId"
+                      placeholder="User Type"
+                      rows=3
+                      formControlName="userType">
+            </textarea>
+            <span class="invalid-feedback"
+                  *ngIf="displayMessage.userType">
+              {{ displayMessage.userType}}
+            </span>
+          </div>
+        </div>
+
+       
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary"
+                      type="submit"
+                      style="width:80px;margin-right:10px"
+                      [disabled]="!profileForm.valid || !profileForm.dirty">
+                Save
+              </button>
+            </span>
+            <span *ngIf="profile.id !== 0">
+              <button class="btn btn-light"
+                      type="button"
+                      style="width:80px;margin-right:10px"
+                      (click)="cancelEdit(profile)">
+                Cancel
+              </button>
+            </span>
+            
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div *ngIf="errorMessage$ | async as errorMessage"
+     class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

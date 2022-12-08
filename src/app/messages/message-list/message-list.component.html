@@ -1,0 +1,33 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h4>Accepted Request</h4>
+        </div>
+        <div class="card-body" style="height: 40rem;">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group">
+                <li *ngFor="let aMessage of acceptedMessage; let i = index"
+                [ngClass]="{'active': selectedItem === i}"
+                
+                (click)="openMessage(aMessage.request_id,i)" class="list-group-item d-flex justify-content-between align-items-start" >
+                    
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold"><div class="bold"></div> Client: {{aMessage.client_username}}</div>
+                      Title: {{aMessage.title}}<br/>
+                      Last Message: {{aMessage.message}}
+                    </div>
+                    <span class="badge bg-info rounded-pill">23</span>
+
+                </li>
+              
+              </ul>
+
+            </div>
+           
+          </div>
+       
+        </div>
+        
+    </div>
+</div>

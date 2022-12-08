@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        
+        <cc-request-list
+        [requests]="requests$ | async"
+        [userType]="userType"
+        [selectedRequest]="selectedRequest$ | async"
+        [errorMessage]="errorMessage$ | async"
+        (deleteRequestEmit)="deleteRequestBtn($event)"
+        (storeRequestEmit)="saveCurrentRequest($event)"
+        (newRequestEmit)="newRequest($event)"
+        (acceptRequestEmit)="acceptRequest($event)"
+
+        [current]="current"
+        [totalRecords]="totalRecords$ | async"
+        [totalPage]="totalPage$ | async"
+        [pageSize]="pageSize"
+        (getRequestPageEmit)="getRequestPage($event)"
+        (pageChangedEmit)="pageChanged($event)"
+        (goToEmit)="goTo($event)"
+        (nextEmit)="next()"
+        (previousEmit)="previous()"
+
+        (changeInputEmit)="changeInput($event)"
+
+        ></cc-request-list> 
+    </div>
+
+</div>

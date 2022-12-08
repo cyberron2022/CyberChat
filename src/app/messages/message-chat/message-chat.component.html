@@ -1,0 +1,65 @@
+<div>
+    <div class="card" >
+        <div class="card-header">
+            <h4>Message</h4>
+        </div>
+        
+        
+        <div #myList appScrollToBottom [scrollNow$s]="scrollNow" [stayAtBottom]="true" cdkScrollable  class="card-body" style="height: 28rem;"
+            >
+                <div *ngFor="let message of messages;let last = last">
+                    <div class="fullname" [ngClass]="{'text-right': currentUserId === message.created_by_id, 'text-left' : currentUserId !== message.created_by_id }"
+                    >{{message.created_fullname}}</div>
+                    <div class="msg-container"
+                    [ngClass]="{'darker': currentUserId === message.created_by_id, 'light' : currentUserId !== message.created_by_id }"
+                    >
+                        <!-- <img src="/w3images/bandmember.jpg" alt="Avatar"> -->
+                        <p class="msg">{{message.message}}</p>
+                        <span class="time-message">{{message.created_date}}</span>
+                    </div>
+                    <!-- {{last ? scrollToBottom() : ''}} -->
+                </div>
+                <!-- <div class="chatbox">
+                    <div class="badge bg-primary text-wrap message" >
+                        Hi how are you im your client and im have request.
+                    </div>
+                 </div> -->
+            
+            
+        </div>
+        <div class="card-footer">
+            <form novalidate
+                (ngSubmit)="sendMessage()"
+                [formGroup]="messageForm"
+                >
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="inputMessage" class="col-form-label">Message</label>
+                </div>
+                <div class="col-auto">
+                    <textarea
+                    #autoFocus
+                    [attr.disabled]="messages === null ? 'disabled' : null"
+                    [ngClass]="{'is-invalid': displayMessage.message}"
+                    class="form-control"
+                    id="sendMessageId"
+                    placeholder="Type your message here..."
+                    rows=3
+                    cols="80"
+                    formControlName="message">
+                </textarea>
+                <span class="invalid-feedback"
+                    *ngIf="displayMessage.message">
+                {{displayMessage.message}}
+                </span>
+                </div>
+                <div class="col-auto mt-2" >
+                  <button type="submit"  
+                  [disabled]="!messageForm.valid || !messageForm.dirty && (messages)"
+                  class="btn btn-primary" >Send</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

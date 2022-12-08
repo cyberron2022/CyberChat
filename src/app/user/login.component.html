@@ -1,0 +1,118 @@
+<div class='container main-content'>
+
+  <div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+
+    <div class="card-body">
+      <form class="needs-validation"
+            novalidate
+            (ngSubmit)="login(loginForm)"
+            #loginForm="ngForm"
+            autocomplete="off">
+        <fieldset>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label"
+                   for="userNameId">User Name</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     [ngClass]="{'is-invalid': ((userNameVar.touched || userNameVar.dirty) && !userNameVar.valid) || ((userNameVar.touched || userNameVar.dirty) && userNameVar.valid && (errorLoginMessage$ | async))}"
+                     id="userNameId"
+                     [type]="(maskUserName$ | async) ? 'password' : 'text'"
+                     placeholder="User Name (required)"
+                     required
+                     ngModel
+                     name="username"
+                     #userNameVar="ngModel" />
+              <div class="invalid-feedback"
+                   *ngIf="(userNameVar.touched || userNameVar.dirty) && userNameVar.hasError('required')">
+                User name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row" >
+            <label class="col-md-2 col-form-label"
+                   for="passwordId">Password</label>
+            <div class="col-md-8">
+              <input class="form-control"
+                     [ngClass]="{'is-invalid': ((passwordVar.touched || passwordVar.dirty) && !passwordVar.valid) || ((passwordVar.touched || passwordVar.dirty) && passwordVar.valid && (errorLoginMessage$ | async))}"
+                     id="passwordId"
+                     type="password"
+                     placeholder="Password (required)"
+                     required
+                     ngModel
+                     name="password"
+                     #passwordVar="ngModel" />
+              <div class="invalid-feedback"
+                   *ngIf="(passwordVar.touched || passwordVar.dirty) && passwordVar.hasError('required')">
+                Password is required.
+              </div>
+              <div class="invalid-feedback" 
+              *ngIf="(errorLoginMessage$ | async) as errorLoginMessage  ">
+                {{ errorLoginMessage }}
+              </div>
+             
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-12 col-md-offset-2">
+              <span>
+                <button class="btn btn-primary"
+                        type="submit"
+                        style="width:80px;margin-right:10px"
+                        [disabled]="loginForm.invalid">
+                  Log In
+                </button>
+              </span>
+              <span>
+                <a class="btn btn-light"
+                   
+                   (click)="clear(loginForm)">
+                  Clear
+                </a>
+              </span>
+
+              <span>
+                <button class="btn btn-primary"
+                        (click)="loginSupport()"
+                        style="width:180px;margin-right:10px"
+                        >
+                  Log In Support
+                </button>
+              </span>
+
+              <span>
+                <button class="btn btn-primary"
+                        (click)="loginClient()"
+                        style="width:180px;margin-right:10px">
+                  Log In Client
+                </button>
+              </span>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="card-footer">
+      <div class="row">
+        <div class="form-check col-md-7">
+          <label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   (change)="checkChanged()"
+                   [checked]="(maskUserName$ | async)">
+            Mask user name
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorMessage$  | async as errorMessage"
+    class="alert alert-danger">
+  Error: {{ errorMessage }}
+  </div>
+</div>

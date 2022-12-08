@@ -1,0 +1,80 @@
+<div class="card"
+     *ngIf="request$ | async as request">
+  <div class="card-header">
+    {{pageTitle}}
+  </div> 
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="saveRequest(request)"
+          [formGroup]="requestForm"
+          >
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label"
+                 for="firstNameId">Title</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.title }"
+                   class="form-control"
+                   id="titleId"
+                   type="text"
+                   placeholder="Title (required)"
+                   formControlName="title"
+                   (blur)="blur()" />
+            <span class="invalid-feedback"
+                  *ngIf="displayMessage.title">
+              {{displayMessage.title}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label"
+                   for="messageId">Message</label>
+  
+            <div class="col-md-9">
+              <textarea [ngClass]="{'is-invalid': displayMessage.message}"
+                        class="form-control"
+                        id="messageId"
+                        placeholder="Message (required)"
+                        (change)="change()"
+                        rows=3
+                        formControlName="message">
+              </textarea>
+              <span class="invalid-feedback"
+                    *ngIf="displayMessage.message">
+                {{ displayMessage.message}}
+              </span>
+            </div>
+          </div>
+
+       
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary"
+                      type="submit"
+                      style="width:80px;margin-right:10px"
+                      [disabled]="!requestForm.valid || !requestForm.dirty">
+                Save
+              </button>
+            </span>
+            <span>
+              <button class="btn btn-light"
+                      type="button"
+                      style="width:80px;margin-right:10px"
+                      (click)="cancelEdit()">
+                Cancel
+              </button>
+            </span>
+            
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div *ngIf="errorMessage$ | async as errorMessage"
+     class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

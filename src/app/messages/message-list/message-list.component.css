@@ -1,0 +1,20 @@
+
+li {
+    font-size:14px;
+    cursor: pointer;
+    text-decoration: none;
+	color: #000000;
+	padding: 8px 8px 8px 8px;
+}
+li:hover, .active {
+    color: #000000;
+	background-color: #90c2f0;
+}
+
+.list-group{
+    max-height: 597px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    /* overflow:scroll; */
+    -webkit-overflow-scrolling: touch;
+}
